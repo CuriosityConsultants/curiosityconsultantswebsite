@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origin story — Curiosity Consultants</title>
+<meta name="description" content="In 2021 a Swiss company hired me to run their influencer department. There was no influencer department. The story behind Curiosity Consultants.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF; --bg-soft:#F8F6FD;
+    --purple-50:#F2ECFC; --purple-100:#E7DBFA; --purple-300:#C4A8F2; --purple-400:#A487EB;
+    --purple-600:#7C3AED; --purple-800:#4C1D8C; --purple-900:#2E1259;
+    --blue-400:#5B8DEF; --blue-500:#3E6FE0; --red-500:#E23B5C;
+    --ink:#171129; --ink-soft:#5B5570; --ink-faint:#8B85A0;
+    --line:#E7E1F5; --line-soft:#F0EBFA;
+    --radius:20px;
+    --shadow-card:0 2px 8px rgba(46,18,89,0.05), 0 1px 2px rgba(46,18,89,0.04);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none;cursor:pointer}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+  :focus-visible{outline:2px solid var(--purple-600);outline-offset:3px;border-radius:6px}
+  img,svg{max-width:100%}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;color:var(--purple-600)}
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;
+    background:linear-gradient(135deg,var(--purple-600),var(--blue-500));box-shadow:0 0 0 3px var(--purple-50)}
+  .grad-text{background:linear-gradient(100deg,var(--purple-800) 0%,var(--purple-600) 45%,var(--blue-500) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .orb{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none}
+  .dot-field{position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(var(--purple-100) 1.2px, transparent 1.2px);background-size:26px 26px;
+    -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 90%);
+            mask-image:radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 90%);opacity:.7}
+
+  nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+    padding:16px 48px;background:rgba(255,255,255,0.82);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-logo{display:flex;align-items:center;gap:10px}
+  .nav-wordmark{display:flex;flex-direction:column;line-height:1.15}
+  .nav-links{display:flex;gap:32px}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--ink-soft);transition:color .15s ease}
+  .nav-links a:hover,.nav-links a[aria-current]{color:var(--purple-600)}
+  .nav-cta{padding:11px 22px;border-radius:999px;
+    background:linear-gradient(100deg,var(--purple-600),var(--blue-500));color:#fff;
+    font-size:13.5px;font-weight:600;box-shadow:0 4px 16px rgba(124,58,237,0.28);transition:transform .15s ease}
+  .nav-cta:hover{transform:translateY(-1px)}
+
+  .hero{position:relative;padding:86px 48px 64px;max-width:920px;overflow:hidden}
+  .hero .orb.o1{width:520px;height:520px;background:radial-gradient(circle,rgba(196,168,242,0.55),transparent 70%);top:-220px;right:-180px}
+  .hero .orb.o2{width:380px;height:380px;background:radial-gradient(circle,rgba(91,141,239,0.30),transparent 70%);bottom:-160px;left:-120px}
+  .hero-inner{position:relative;z-index:2}
+  .hero-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(38px,5.2vw,60px);font-weight:700;
+    letter-spacing:-1.4px;line-height:1.06;margin:22px 0 26px;color:var(--ink)}
+  .hero-lede{font-size:20px;line-height:1.5;color:var(--ink);max-width:600px;margin:0 0 30px;
+    padding-left:20px;border-left:3px solid var(--purple-600)}
+  .hero-tagline{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.8px;color:var(--ink-faint)}
+
+  .divstrip{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-soft)}
+  .strip-item{display:flex;align-items:center;gap:9px;padding:16px 28px;font-family:'IBM Plex Mono',monospace;
+    font-size:12px;font-weight:500;color:var(--ink-soft);letter-spacing:.3px;border-right:1px solid var(--line)}
+  .strip-item:last-child{border-right:none}
+  .strip-dot{width:6px;height:6px;border-radius:50%;background:linear-gradient(135deg,var(--purple-600),var(--blue-500))}
+  .strip-item:nth-child(3n) .strip-dot{background:var(--red-500)}
+
+  .story{padding:76px 48px 20px;max-width:820px}
+  .chap{margin-bottom:56px}
+  .chap-h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3.2vw,32px);font-weight:700;
+    letter-spacing:-.8px;line-height:1.16;margin:16px 0 18px;color:var(--ink)}
+  .chap p{font-size:16.5px;line-height:1.75;color:var(--ink-soft);margin:0 0 16px;max-width:640px}
+  blockquote{margin:26px 0;padding:4px 0 4px 20px;border-left:3px solid var(--purple-600);
+    font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;line-height:1.4;
+    letter-spacing:-.3px;color:var(--purple-800);max-width:600px}
+
+  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);
+    border-radius:var(--radius);overflow:hidden;background:var(--bg-soft);margin:26px 0}
+  .stat-cell{padding:30px 24px;border-right:1px solid var(--line)}
+  .stat-cell:last-child{border-right:none}
+  .stat-num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:36px;letter-spacing:-1px;
+    background:linear-gradient(100deg,var(--purple-800),var(--blue-500));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat-num span{font-size:21px}
+  .stat-label{font-size:13px;color:var(--ink-soft);margin-top:6px;line-height:1.4}
+
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px;max-width:820px}
+  .pillar{padding:24px 22px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);
+    box-shadow:var(--shadow-card)}
+  .pillar-bar{width:30px;height:3px;border-radius:2px;margin-bottom:16px;
+    background:linear-gradient(90deg,var(--purple-600),var(--blue-500))}
+  .pillar:nth-child(3) .pillar-bar{background:linear-gradient(90deg,var(--red-500),var(--purple-600))}
+  .pillar-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:var(--ink);margin-bottom:8px}
+  .pillar-desc{font-size:14px;line-height:1.6;color:var(--ink-soft)}
+
+  .cta-section{position:relative;text-align:center;padding:96px 48px;overflow:hidden}
+  .cta-section .orb{width:520px;height:520px;background:radial-gradient(circle,rgba(196,168,242,0.45),transparent 70%);top:-140px;left:50%;transform:translateX(-50%)}
+  .cta-mark{position:relative;z-index:2;display:flex;justify-content:center;margin-bottom:26px}
+  .cta-h2{position:relative;z-index:2;font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:clamp(28px,4vw,42px);letter-spacing:-1px;line-height:1.16;margin:0 0 16px;color:var(--ink);
+    max-width:760px;margin-inline:auto}
+  .cta-sub{position:relative;z-index:2;font-size:16px;color:var(--ink-soft);margin:0 auto 34px;max-width:520px}
+  .btn-primary{position:relative;z-index:2;display:inline-block;padding:16px 34px;border-radius:999px;
+    background:linear-gradient(100deg,var(--purple-600),var(--blue-500));color:#fff;font-size:15px;font-weight:600;
+    box-shadow:0 6px 22px rgba(124,58,237,0.30);transition:transform .15s ease}
+  .btn-primary:hover{transform:translateY(-2px)}
+
+  footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+    padding:32px 48px;border-top:1px solid var(--line)}
+  .footer-copy{font-size:12.5px;color:var(--ink-faint)}
+  .footer-tagline{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-faint);letter-spacing:.3px}
+
+  @media (max-width:980px){.stats-row{grid-template-columns:1fr 1fr}.stat-cell:nth-child(2){border-right:none}
+    .pillars{grid-template-columns:1fr}}
+  @media (max-width:680px){
+    nav{padding:14px 22px}.nav-links{display:none}
+    .hero{padding:56px 22px 48px}.story{padding:52px 22px 10px}
+    .cta-section{padding:72px 22px}.strip-item{padding:13px 18px}
+    .stats-row{grid-template-columns:1fr}.stat-cell{border-right:none;border-bottom:1px solid var(--line)}
+    .stat-cell:last-child{border-bottom:none}
+    footer{padding:28px 22px;flex-direction:column;align-items:flex-start}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn-primary,.nav-cta{transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <svg width="32" height="46" viewBox="0 0 32 46" role="img" aria-label="Curiosity Consultants">
+      <defs><linearGradient id="ng1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#3E6FE0"/></linearGradient></defs>
+      <path d="M4 16 Q4 3 16 3 Q28 3 28 14 Q28 24 16 28 L16 34" stroke="url(#ng1)" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <path d="M7 16 Q7 7 16 7 Q25 7 25 14 Q25 23 16 27 L16 33" stroke="#17112A" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <ellipse cx="16" cy="42" rx="5" ry="4.5" fill="#E23B5C"/>
+      <ellipse cx="16" cy="41.5" rx="2.2" ry="2" fill="#fff" opacity="0.5"/>
+    </svg>
+    <div class="nav-wordmark">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#17112A;letter-spacing:-0.3px">Curiosity</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;color:#8B85A0;letter-spacing:1.4px">CONSULTANTS</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="/services">Services</a>
+    <a href="/how-we-work">How we work</a>
+    <a href="/diy">DIY program</a>
+    <a href="/about" aria-current="page">About</a>
+  </div>
+  <a class="nav-cta" href="/contact">Start a conversation</a>
+</nav>
+
+<section class="hero">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="dot-field"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Origin story</div>
+    <h1 class="hero-h1">Why me, why this,<br><span class="grad-text">why now.</span></h1>
+    <p class="hero-lede">In 2021 a Swiss company hired me to run their influencer department. There was no influencer department.</p>
+    <div class="hero-tagline">GLOBAL REACH · AFRICAN ROOTS · AI-POWERED DELIVERY</div>
+  </div>
+</section>
+
+<div class="divstrip">
+  <div class="strip-item"><div class="strip-dot"></div>2021 · Geneva</div>
+  <div class="strip-item"><div class="strip-dot"></div>2024 · Sydney</div>
+  <div class="strip-item"><div class="strip-dot"></div>2025 · Paris</div>
+  <div class="strip-item"><div class="strip-dot"></div>Now · Johannesburg</div>
+</div>
+
+<article class="story">
+
+  <section class="chap">
+    <div class="eyebrow">2021 · Cape Town to Geneva</div>
+    <h2 class="chap-h2">The empty spreadsheet</h2>
+    <p>There was a job title, a Slack login, and a founder in Geneva who was fairly sure this was going to matter. I was in Cape Town, eight thousand kilometres away, with a blank sheet and a list of questions.</p>
+    <p>Eighteen months later that department had onboarded over a thousand creators, signed more than $2 million in contracts, and had five people running it.</p>
+    <p>I'd love to tell you it came from a brilliant idea. It came from writing down what we did on Monday, fixing what broke on Tuesday, and writing it down again on Wednesday. Then doing that for seventy-eight weeks, until the thing ran whether I was in the room or not.</p>
+    <blockquote>That is the whole trick. I have been repeating it ever since.</blockquote>
+  </section>
+
+  <section class="chap">
+    <div class="eyebrow">2024 · Sydney</div>
+    <h2 class="chap-h2">Then I left crypto to sell gift hampers</h2>
+    <p>Corporate gifting. Four hundred corporate accounts. No token launches, no Discord at two in the morning, nobody calling anything a paradigm. People I respect asked me, kindly, if I was alright.</p>
+    <p>It was the best education I've had.</p>
+    <p>With the noise stripped out, the job turned out to be identical. Know what the client actually needs. Remember what they told you nine months ago. Make the second order easier than the first. Build the system so the answer doesn't depend on whether you slept well.</p>
+    <blockquote>Growth was never the new logo. Growth is what happens on day ninety-one.</blockquote>
+    <p>I went back into tech able to see it everywhere. Most briefs hide the real problem. Very few companies have a strategy problem — most of them have a perfectly good strategy. What they have is a gap between the deck and the ground, and twelve capable people underneath it, guessing.</p>
+  </section>
+
+  <section class="chap">
+    <div class="eyebrow">2025 · Paris</div>
+    <h2 class="chap-h2">A launch that worked for boring reasons</h2>
+    <p>I ran strategic operations for a global hardware launch.</p>
+    <div class="stats-row">
+      <div class="stat-cell"><div class="stat-num">140<span>+</span></div><div class="stat-label">Campaigns delivered</div></div>
+      <div class="stat-cell"><div class="stat-num">5.18<span>M</span></div><div class="stat-label">Users reached</div></div>
+      <div class="stat-cell"><div class="stat-num">99<span>%</span></div><div class="stat-label">Engagement growth, month on month</div></div>
+      <div class="stat-cell"><div class="stat-num">40<span>%</span></div><div class="stat-label">Lower campaign cost</div></div>
+    </div>
+    <p>None of that came from a clever idea either. It came from everyone knowing exactly what happened next. Outcomes, not outputs.</p>
+  </section>
+
+  <section class="chap">
+    <div class="eyebrow">Now · Johannesburg · Global</div>
+    <h2 class="chap-h2">Why I'm doing this now and not in five years</h2>
+    <p>AI has made execution close to free. Anyone can produce. Almost nobody can decide. The scarce thing is no longer the work. It's knowing which work, in what order, measured how, owned by whom.</p>
+    <p>The companies that win the next five years won't be the ones with the best ideas. They'll be the ones whose ideas reach the ground.</p>
+    <p>I've spent nine years doing that from inside one company at a time. Cape Town, Geneva, Paris, Sydney. Startups with everything to prove, and businesses with everything to lose. I'd rather do it for more than one at a time.</p>
+    <p>So: Curiosity Consultants. Three pillars, one obsession — asking the question leadership is too close to ask, then building the answer.</p>
+    <div class="pillars">
+      <div class="pillar"><div class="pillar-bar"></div>
+        <div class="pillar-title">Business &amp; executive strategy</div>
+        <div class="pillar-desc">Market entry, commercial structuring, growth planning, and the tough calls that shape where the business goes next.</div></div>
+      <div class="pillar"><div class="pillar-bar"></div>
+        <div class="pillar-title">Brand &amp; marketing</div>
+        <div class="pillar-desc">Positioning, identity, campaign planning, and hands-on execution in the markets that matter to you.</div></div>
+      <div class="pillar"><div class="pillar-bar"></div>
+        <div class="pillar-title">Operations streamlining</div>
+        <div class="pillar-desc">Process audits, AI-powered workflow redesign, and reporting frameworks that cut cost and time without cutting quality.</div></div>
+    </div>
+    <blockquote style="margin-top:34px">Relentlessly curious. Ruthlessly effective.</blockquote>
+  </section>
+
+</article>
+
+<section class="cta-section">
+  <div class="orb"></div>
+  <div class="cta-mark">
+    <svg width="56" height="74" viewBox="0 0 56 74" role="img" aria-label="Curiosity Consultants mark">
+      <defs><linearGradient id="ctag1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#3E6FE0"/></linearGradient></defs>
+      <path d="M8 28 Q8 6 28 6 Q48 6 48 26 Q48 44 28 50 L28 60" stroke="url(#ctag1)" stroke-width="12" stroke-linecap="round" fill="none"/>
+      <path d="M13 28 Q13 12 28 12 Q43 12 43 26 Q43 42 28 48 L28 58" stroke="#17112A" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <ellipse cx="28" cy="70" rx="9" ry="8" fill="#E23B5C"/>
+      <ellipse cx="28" cy="69" rx="4" ry="3.5" fill="#fff" opacity="0.4"/>
+    </svg>
+  </div>
+  <h2 class="cta-h2">If you have a strategy you believe in and a quiet feeling it isn't reaching the ground, <span class="grad-text">that's our entire job.</span></h2>
+  <p class="cta-sub">Book a no-obligation discovery call. We'll ask the questions. You'll leave with clarity.</p>
+  <a class="btn-primary" href="/contact">Book a discovery call</a>
+</section>
+
+<footer>
+  <div class="nav-logo">
+    <svg width="22" height="32" viewBox="0 0 22 32" role="img" aria-label="Curiosity Consultants">
+      <defs><linearGradient id="fg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#3E6FE0"/></linearGradient></defs>
+      <path d="M3 11 Q3 2 11 2 Q19 2 19 10 Q19 17 11 19 L11 23" stroke="url(#fg1)" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <path d="M5 11 Q5 4 11 4 Q17 4 17 10 Q17 16 11 18 L11 22" stroke="#17112A" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <ellipse cx="11" cy="29" rx="3.5" ry="3" fill="#E23B5C"/>
+    </svg>
+    <div>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#17112A">Curiosity Consultants</span>
+      <div class="footer-copy" style="margin-top:2px">Johannesburg · Global · hello@curiosityconsultants.co</div>
+    </div>
+  </div>
+  <div class="footer-tagline">THE ANSWER STARTS WITH A QUESTION.</div>
+</footer>
+
+</body>
+</html>
